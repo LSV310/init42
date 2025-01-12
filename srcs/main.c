@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/10 22:34:01 by agruet            #+#    #+#             */
-/*   Updated: 2025/01/12 12:31:41 by agruet           ###   ########.fr       */
+/*   Updated: 2025/01/12 14:15:23 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	parssing_tree(char *arg, char **ep)
 	else if (!ft_strcmp(arg, "git"))
 		exec_cmd("/home/agruet/dev/init42/srcs/git.sh", NULL, ep);
 	else
-		ft_printf("Argument not found\n");
+		ft_fprintf(2, "Argument not found\n");
 }
 
 int	main(int ac, char **av, char **ep)

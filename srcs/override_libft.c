@@ -6,7 +6,7 @@
 /*   By: agruet <agruet@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/11 10:55:16 by agruet            #+#    #+#             */
-/*   Updated: 2025/01/12 12:31:42 by agruet           ###   ########.fr       */
+/*   Updated: 2025/01/12 13:56:50 by agruet           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	main(int ac, char **av, char **ep)
 		else
 		{
 			free(gnl);
+			ft_fprintf(0, "Libft is already installed, do you want to override it? [Y,n] ");
 			gnl = get_next_line(0);
 		}
 	}

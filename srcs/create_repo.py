@@ -6,7 +6,7 @@ import os
 GITHUB_TOKEN = os.getenv('GITHUB_TOKEN')
 
 if GITHUB_TOKEN is None:
-	raise ValueError("Le token GitHub n'est pas défini dans les variables d'environnement.")
+	raise ValueError("GitHub token is not defined in environment variables.")
 
 # URL de l'API GitHub pour accéder aux dépôts
 API_URL = "https://api.github.com/user/repos"
@@ -43,37 +43,34 @@ def create_repo(repo_name):
 def run_shell_script_with_ssh_key(ssh_key):
 	"""Exécute le script shell avec la clé SSH comme paramètre"""
 	try:
-		# Appel du script deploy.sh avec la clé SSH en paramètre
 		result = subprocess.run(["/home/agruet/dev/init42/srcs/generate_remote.sh", ssh_key], check=True, text=True, capture_output=True)
-		print("Script exécuté avec succès")
-		print(result.stdout)
 	except subprocess.CalledProcessError as e:
-		print("Erreur lors de l'exécution du script")
+		print("An error occurred while executing the script")
 		print(e.stderr)
 
 def main():
-	repo_name = input("Entrez le nom du dépôt à vérifier/créer: ")
+	repo_name = input("Enter the name of the repository to create: ")
 
 	# Vérifie si le dépôt existe déjà
 	exists, ssh_url = repo_exists(repo_name)
 
 	if exists:
-		print(f"Le dépôt '{repo_name}' existe déjà. Voici la clé SSH: {ssh_url}")
+		print(f"Repository '{repo_name}' already exist. SSH key: {ssh_url}")
 		# Lancer le programme shell avec la clé SSH
 		run_shell_script_with_ssh_key(ssh_url)
 	else:
-		print(f"Le dépôt '{repo_name}' n'existe pas.")
-		create = input("Souhaitez-vous créer ce dépôt (O/N)? ").strip().lower()
-		if create == 'o':
+		print(f"Repository '{repo_name}' doesn't exist.")
+		create = input("Are you sure you want to create the repo ? [Y,n] ").strip().lower()
+		if create == 'y':
 			ssh_url = create_repo(repo_name)
 			if ssh_url:
-				print(f"Le dépôt a été créé avec succès. Voici la clé SSH: {ssh_url}")
+				print(f"Repository created successfully. SSH key: {ssh_url}")
 				# Lancer le programme shell avec la clé SSH
 				run_shell_script_with_ssh_key(ssh_url)
 			else:
-				print("Une erreur est survenue lors de la création du dépôt.")
+				print("An error occurred while creating the repository.")
 		else:
-			print("Le dépôt n'a pas été créé.")
+			print("Repository creation aborted.")
 
 if __name__ == '__main__':
 	main()
