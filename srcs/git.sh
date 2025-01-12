@@ -5,7 +5,7 @@ GITIGNORE=$(if [ $(ls -la | grep ".gitignore" | wc -l) -gt 0 ]; then echo 1; els
 
 if [ $GIT -eq 0 ]
 then
-	git init > /dev/null
+	git init &>/dev/null
 	python3 /home/agruet/dev/init42/srcs/create_repo.py
 fi
 
