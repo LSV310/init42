@@ -57,7 +57,7 @@ then
 	then
 		add_libft
 	else
-		/home/agruet/dev/init42/libft_override
+		~/init42/libft_override
 	fi
 elif [ "$1" = "confirm" ]
 then

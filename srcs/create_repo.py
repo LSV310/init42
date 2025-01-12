@@ -43,7 +43,7 @@ def create_repo(repo_name):
 def run_shell_script_with_ssh_key(ssh_key):
 	"""Exécute le script shell avec la clé SSH comme paramètre"""
 	try:
-		result = subprocess.run(["/home/agruet/dev/init42/srcs/generate_remote.sh", ssh_key], check=True, text=True, capture_output=True)
+		result = subprocess.run(["~/init42/srcs/generate_remote.sh", ssh_key], check=True, text=True, capture_output=True)
 	except subprocess.CalledProcessError as e:
 		print("An error occurred while executing the script")
 		print(e.stderr)

@@ -31,15 +31,15 @@ then
 		echo -e "$COLOR_BROWN git $COLOR_NC initialization failed"
 	fi
 	echo -e "Creating repository on$COLOR_GRAY github $COLOR_NC"
-	python3 /home/agruet/dev/init42/srcs/create_repo.py
+	python3 ~/init42/srcs/create_repo.py
 elif [ $(git remote -v | grep "origin" | wc -l) -eq 0 ]
 then
 	echo -e "Creating repository on$COLOR_GRAY github $COLOR_NC"
-	python3 /home/agruet/dev/init42/srcs/create_repo.py
+	python3 ~/init42/srcs/create_repo.py
 elif [ $(git remote -v | grep "github" | wc -l) -eq 0 ]
 then
 	echo -e "Creating repository on$COLOR_GRAY github $COLOR_NC"
-	python3 /home/agruet/dev/init42/srcs/create_repo.py
+	python3 ~/init42/srcs/create_repo.py
 fi
 
 GITIGNORE_BOILER_PLATE="# Gitignore
